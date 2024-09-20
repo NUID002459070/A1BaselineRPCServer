@@ -12,7 +12,7 @@ class TestEndToEnd(unittest.TestCase):
         cls.server_process = subprocess.Popen(['python', 'server.py'])
         # Give the server a moment to start up
         time.sleep(5)
-        cls.client = InventoryClient("http://localhost:5000")
+        cls.client = InventoryClient("http://server:5000")
 
     @classmethod
     def tearDownClass(cls):
