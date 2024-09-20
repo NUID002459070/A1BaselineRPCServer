@@ -1,4 +1,4 @@
-# client.py
+
 import requests
 import json
 
@@ -27,7 +27,22 @@ class InventoryClient:
 
 # Example usage
 if __name__ == "__main__":
-    client = InventoryClient("http://localhost:5000")
+#dns = ['www.google.com', 'web1.com']
+#for obj in dns:
+#        url = "https://" + obj
+#        try:
+#            response = requests.get(url, verify=False, timeout=5)
+#        except requests.exceptions.ConnectionError:
+#            print("Site not rechable", url)
+#
+
+    try:
+      client = InventoryClient("http://server:5000")
+    except Exception as e:
+      logging.error(traceback.format_exc())
+
+    # client = InventoryClient("http://127.0.0.1:5000")
+    #client = InventoryClient("http://localhost:5000")
     
     print(client.define_stuff("widget", "A useful widget"))
     print(client.add(10, "widget"))
