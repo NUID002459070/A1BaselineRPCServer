@@ -4,15 +4,17 @@ import time
 import requests
 from client import InventoryClient
 
+TEST_SERVER_NAME="localhost"
+
 class TestEndToEnd(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
         # Start the Flask server
-        cls.server_process = subprocess.Popen(['python', 'server.py'])
+        cls.server_process = subprocess.Popen(['python', 'server.py', TEST_SERVER_NAME])
         # Give the server a moment to start up
         time.sleep(5)
-        cls.client = InventoryClient("http://server:5000")
+        cls.client = InventoryClient("http://" + TEST_SERVER_NAME + ":5000")
 
     @classmethod
     def tearDownClass(cls):
