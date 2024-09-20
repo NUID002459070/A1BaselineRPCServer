@@ -3,13 +3,22 @@
 version: '3.8'
 
 services:
-  inventory-service:
-    build: .
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.s
     ports:
       - "5000:5000"
     volumes:
       - .:/app
     environment:
       - FLASK_ENV=development
-
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.c
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
 
