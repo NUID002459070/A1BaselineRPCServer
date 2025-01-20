@@ -51,6 +51,7 @@ class TestInventoryClient(unittest.TestCase):
         
         self.assertEqual(response, {'message': 'Undefined type \'widget\'.'})
         mock_post.assert_called_once_with('http://server:5000/undefine', headers={'Content-Type': 'application/json'}, data=json.dumps({"type": "widget"}))
+<<<<<<< HEAD
 
     @patch('requests.get')
     def test_get_count_existing_type(self, mock_get):
@@ -74,6 +75,8 @@ class TestInventoryClient(unittest.TestCase):
         self.assertEqual(response, {'count': -1})
         mock_get.assert_called_once_with('http://server:5000/get_count/nonexistent')
 
+=======
+>>>>>>> 5b8fc5ae8c86965ed9500f4cb95076aeef99b3a6
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,5 @@
 # server.py
+import argparse
 import logging
 
 from flask import Flask, request, jsonify
@@ -46,5 +47,8 @@ def get_count_route(type):
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
-    app.run(host='0.0.0.0', port=5000, debug=True)
-
+    parser = argparse.ArgumentParser(description="A simple Python program with configurable parameter.")
+    parser.add_argument('arg1', nargs='?', default='localhost', help='Input argument (default: "default_value")')
+    args = parser.parse_args()
+    
+    app.run(host=args.arg1, port=5000, debug=True)
