@@ -37,6 +37,12 @@ def remove():
     type = data.get('type')
     result = service.remove(quantity, type)
     return jsonify({'message': result})
+    
+@app.route('/get_count/<type>', methods=['GET'])
+def get_count_route(type):
+    count = service.get_count(type)
+    return jsonify({'count': count})
+
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)

@@ -24,6 +24,12 @@ class InventoryClient:
 
     def remove(self, quantity, type):
         return self._post('remove', {"quantity": quantity, "type": type})
+        
+    def get_count(self, type):
+        url = f"{self.base_url}/get_count/{type}"
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
 
 # Example usage
 if __name__ == "__main__":
